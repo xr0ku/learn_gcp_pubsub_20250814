@@ -4,7 +4,15 @@ import express from "express";
 import { PubSub } from "@google-cloud/pubsub";
 import cors from "cors";
 
-dotenv.config({ path: path.resolve(__dirname, "../.env") });
+if (process.env.NODE_ENV === "production") {
+  dotenv.config({
+    path: path.resolve(__filename, "/etc/secrets/pub-sub-api-access-key.json"),
+  });
+} else {
+  dotenv.config({
+    path: path.resolve(__filename, `../../../../.env_${process.env.NODE_ENV}`),
+  });
+}
 
 const app = express();
 app.use(cors());

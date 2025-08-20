@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "cross-env NODE_ENV=production ts-node src/index.ts",
+    "start:local": "cross-env NODE_ENV=local ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.2.1",
+    "cross-env": "^10.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   }
